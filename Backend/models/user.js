@@ -1,9 +1,14 @@
-// Corrected user.js
-const express = require('express');
-const router = express.Router();
+const { Schema, model } = require('mongoose');
 
-router.get('/users', (req, res) => {
-  res.status(200).json([{ name: 'Alice', email: 'alice@example.com' }]);
-});
+const userSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true }
+  },
+  { timestamps: true } // ✅ correct place
+);
 
-module.exports = router;
+const User = model("user", userSchema);
+
+module.exports = User;

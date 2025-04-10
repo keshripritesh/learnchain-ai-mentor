@@ -1,27 +1,49 @@
-const User = require("../models/user"); // CommonJS syntax
+const User = require("../models/user");
+const bcrypt = require("bcryptjs");
 
-async function loginWithWallet(req, res) {
-  const { walletAddress, signedMessage } = req.body;
+const register = async (req, res) => {
+  const { name, email, password } = req.body;
 
-  if (!walletAddress || !signedMessage) {
-    return res.status(400).json({ message: "Missing credentials" });
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: "All fields are required." });
   }
 
   try {
-    let user = await User.findOne({ walletAddress });
+    const existingUser = await User.findOne({ email });
 
-    if (!user) {
-      user = await User.create({ walletAddress, signedMessage });
-    } else {
-      user.signedMessage = signedMessage;
-      await user.save();
+    if (existingUser) {
+      return res.status(409).json({ message: "Email already in use." });
     }
 
-    res.json({ success: true, user });
-  } catch (error) {
-    console.error("Error during login:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-}
+    const hashedPassword = await bcrypt.hash(password, 12);
 
-module.exports = { loginWithWallet };
+    const newUser = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    res.status(201).json({ success: true, user: newUser });
+  } catch (error) {
+    console.error("Registration error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Login is handled by Passport in route
+const loginSuccess = (req, res) => {
+  res.status(200).json({ success: true, user: req.user });
+};
+
+const logout = (req, res) => {
+  req.logout(function (err) {
+    if (err) return next(err);
+    res.status(200).json({ success: true, message: "Logged out" });
+  });
+};
+
+module.exports = {
+  register,
+  loginSuccess,
+  logout,
+};

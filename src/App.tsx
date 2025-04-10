@@ -11,6 +11,9 @@ import CredentialsPage from "./pages/CredentialsPage";
 import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./pages/NotFound";
 import About from "../src/components/dashboard/About";
+import Login from "./Login"; // no typo, no extra extension
+import Signup from "./Signup"; // no typo, no extra extension
+
 
 
 
@@ -30,6 +33,9 @@ const App = () => (
           <Route path="/credentials" element={<CredentialsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/about/:courseId" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          
          
           <Route path="*" element={<NotFound />} />
 

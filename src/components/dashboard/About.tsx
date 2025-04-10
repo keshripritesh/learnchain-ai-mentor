@@ -1,137 +1,6 @@
-// import { Link } from "react-router-dom";
-// import { Youtube, Notebook } from "lucide-react";
-// import { useEffect } from "react";
 
-// const About = () => {
-//   useEffect(() => {
-//     // Chatbase script injection
-//     const chatbaseScript = document.createElement("script");
-//     chatbaseScript.innerHTML = `
-//       (function(){
-//         if(!window.chatbase || window.chatbase("getState") !== "initialized") {
-//           window.chatbase = (...arguments) => {
-//             if(!window.chatbase.q) { window.chatbase.q = [] }
-//             window.chatbase.q.push(arguments)
-//           };
-//           window.chatbase = new Proxy(window.chatbase, {
-//             get(target, prop) {
-//               if(prop === "q") { return target.q }
-//               return (...args) => target(prop, ...args)
-//             }
-//           })
-//         }
-//         const onLoad = function() {
-//           const script = document.createElement("script");
-//           script.src = "https://www.chatbase.co/embed.min.js";
-//           script.id = "cC2tiBlPFdWLCCWdFMAOq";
-//           script.domain = "www.chatbase.co";
-//           document.body.appendChild(script)
-//         };
-//         if(document.readyState === "complete") {
-//           onLoad()
-//         } else {
-//           window.addEventListener("load", onLoad)
-//         }
-//       })();
-//     `;
-//     document.body.appendChild(chatbaseScript);
-
-//     // Cleanup on unmount
-//     return () => {
-//       // Remove the injected script
-//       if (chatbaseScript) {
-//         document.body.removeChild(chatbaseScript);
-//       }
-
-//       // Remove the Chatbase script tag if it's still there
-//       const chatbaseEmbed = document.getElementById("cC2tiBlPFdWLCCWdFMAOq");
-//       if (chatbaseEmbed) {
-//         chatbaseEmbed.remove();
-//       }
-
-//       // Remove any Chatbase-injected iframes
-//       const iframes = document.querySelectorAll("iframe");
-//       iframes.forEach((iframe) => {
-//         if (iframe.src.includes("chatbase") || iframe.title === "Chatbase") {
-//           iframe.remove();
-//         }
-//       });
-//     };
-//   }, []);
-
-//   return (
-//     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white p-8">
-//       <div className="max-w-6xl mx-auto">
-//         {/* Header */}
-//         <header className="text-center mb-12">
-//           <h1 className="text-5xl font-bold text-purple-800 mb-4 font-serif">
-//             Learning Resources
-//           </h1>
-//           <p className="text-lg text-purple-600 max-w-2xl mx-auto">
-//             Explore our curated collection of tools to enhance your learning journey
-//           </p>
-//         </header>
-
-//         {/* Custom Flex Layout */}
-//         <div className="flex flex-col md:flex-row gap-8 items-stretch">
-//           {/* Left Image Card */}
-//           <div className="flex-1 bg-white rounded-xl shadow-lg border border-purple-100 hover:border-purple-300 overflow-hidden">
-//             <img 
-//               src="/mnt/data/image.png" 
-//               alt="Learning Visual" 
-//               className="w-full h-full object-cover max-h-[400px]" 
-//             />
-//           </div>
-
-//           {/* Right Two Stacked Cards */}
-//           <div className="flex-1 flex flex-col gap-8">
-//             {/* YouTube Card */}
-//             <a
-//               href="https://youtube.com"
-//               target="_blank"
-//               rel="noopener noreferrer"
-//               className="bg-white rounded-xl shadow-lg p-6 border border-purple-100 hover:border-purple-300 hover:shadow-xl transition"
-//             >
-//               <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-//                 <Youtube className="h-8 w-8 text-purple-700" />
-//               </div>
-//               <h2 className="text-xl font-semibold text-purple-900 mb-2">
-//                 Video Tutorials
-//               </h2>
-//               <p className="text-purple-600 text-sm">
-//                 Watch curated video content to enhance your understanding
-//               </p>
-//             </a>
-
-//             {/* Notes Card */}
-//             <Link 
-//               to="/notes" 
-//               className="bg-white rounded-xl shadow-lg p-6 border border-purple-100 hover:border-purple-300 hover:shadow-xl transition"
-//             >
-//               <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-//                 <Notebook className="h-8 w-8 text-purple-700" />
-//               </div>
-//               <h2 className="text-xl font-semibold text-purple-900 mb-2">
-//                 Study Notes
-//               </h2>
-//               <p className="text-purple-600 text-sm">
-//                 Access comprehensive notes and cheat sheets for quick reference
-//               </p>
-//             </Link>
-//           </div>
-//         </div>
-
-//         {/* Footer */}
-//         <footer className="mt-16 text-center text-purple-500 text-sm">
-//           <p>© {new Date().getFullYear()} Learning Platform. All rights reserved.</p>
-//         </footer>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default About;
 import { useParams, Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Youtube, Notebook,PenTool, Code, Shield, Database, Cloud, Lock, Cpu, Layout, Globe } from "lucide-react";
 
 // Define all course content
@@ -151,13 +20,7 @@ const courseContent = {
         icon: <Notebook className="h-8 w-8 text-purple-700" />,
         title: "ML Study Notes",
         description: "Access comprehensive ML notes and cheat sheets",
-        link: "/notes/ml"
-      },
-      {
-        icon: <Database className="h-8 w-8 text-purple-700" />,
-        title: "Datasets & Exercises",
-        description: "Practice with real-world datasets and exercises",
-        link: "/datasets/ml"
+        link: "https://drive.google.com/drive/folders/1rmLfPN-j-aV0IGhWTwGtlMZO0mq2ncdT?usp=drive_link"
       }
     ]
   },
@@ -172,12 +35,12 @@ const courseContent = {
       description: "Watch tutorials to learn UI/UX basics and best practices",
       link: "https://youtube.com/playlist?list=PLjiHFwhbHYlHSpAflJwjsKAyMaMhASm0F&si=lJROAnMTkjNWcIv6"
     },
-    {
-      icon: <Notebook className="h-8 w-8 text-purple-700" />,
-      title: "Design Systems",
-      description: "Learn about design systems and user interface consistency",
-      link: "/notes/ux-design"
-      }
+      {
+        icon: <Notebook className="h-8 w-8 text-purple-700" />,
+        title: "UI-UX Design",
+        description: "Learn about Data Analytics concepts and tools",
+        link: "https://drive.google.com/drive/folders/1XEE2YzehZpVOjQmRUr4In6xC5UEwFTeK?usp=drive_link"
+        },
     ]
   },
   "blockchain": {
@@ -192,16 +55,10 @@ const courseContent = {
         link: "https://youtube.com/playlist?list=PLS5SEs8ZftgUNcUVXtn2KXiE1Ui9B5UrY&si=b0CjlSnuM6XERnKQ"
       },
       {
-        icon: <Code className="h-8 w-8 text-purple-700" />,
-        title: "Smart Contracts",
-        description: "Learn to write and deploy smart contracts",
-        link: "/tutorials/smart-contracts"
-      },
-      {
         icon: <Notebook className="h-8 w-8 text-purple-700" />,
         title: "Blockchain Concepts",
         description: "Study notes on blockchain fundamentals",
-        link: "/notes/blockchain"
+        link: "https://drive.google.com/drive/folders/1rmLfPN-j-aV0IGhWTwGtlMZO0mq2ncdT?usp=drive_link"
       }
     ]
   },
@@ -217,40 +74,126 @@ const courseContent = {
         link: "https://youtube.com/playlist?list=PLwoh6bBAszPrES-EOajos_E9gvRbL27wz&si=0NDJ5vX8szk5RZ4q"
       },
       {
-        icon: <Code className="h-8 w-8 text-purple-700" />,
-        title: "Code Exercises",
-        description: "Practice your web development skills",
-        link: "/exercises/web"
+        icon: <Notebook className="h-8 w-8 text-purple-700" />,
+        title: "Web dev",
+        description: "Study notes on web development concepts",
+        link: "https://drive.google.com/drive/folders/1Jrw7dgTlyyPHqaMeDXEigWTxbMtAZsQP?usp=drive_link"
       }
     ]
   },
-  "Cloud Computing": {
-  title: "Cloud Computing Foundations",
-  description: "Understand cloud infrastructure, deployment models, and service architectures using platforms like AWS, Azure, and GCP.",
-  icon: <Layout className="h-8 w-8 text-purple-700" />,
+//   },
+//   "Cloud Computing": {
+//   title: "Cloud Computing Foundations",
+//   description: "Understand cloud infrastructure, deployment models, and service architectures using platforms like AWS, Azure, and GCP.",
+//   icon: <Layout className="h-8 w-8 text-purple-700" />,
+//   resources: [
+//     {
+//       icon: <Youtube className="h-8 w-8 text-purple-700" />,
+//       title: "Cloud Computing Tutorials",
+//       description: "Watch tutorials on cloud platforms and deployment",
+//       link: "https://youtube.com/playlist?list=PLEiEAq2VkUUIJ3o1tehvtux0_Ynf42CBN&si=7YMrrbL4lnZMcG_I"
+//     },
+//     {
+//       icon: <Code className="h-8 w-8 text-purple-700" />,
+//       title: "Cloud Labs & Exercises",
+//       description: "Practice cloud deployments and configurations",
+//       link: "/exercises/cloud"
+//     }
+   
+//   ]
+// },
+"data-analytics": {
+  title: "Data Analytics",
+  description: "Learn to analyze, visualize, and derive insights from data using tools like Python, Excel, and SQL.",
+  icon: <Youtube className="h-8 w-8 text-purple-700" />,
   resources: [
     {
       icon: <Youtube className="h-8 w-8 text-purple-700" />,
-      title: "Cloud Computing Tutorials",
-      description: "Watch tutorials on cloud platforms and deployment",
-      link: "https://youtube.com/playlist?list=PLEiEAq2VkUUIJ3o1tehvtux0_Ynf42CBN&si=7YMrrbL4lnZMcG_I"
+      title: "Analytics Video Tutorials",
+      description: "Watch data analytics tutorials covering Excel, SQL, Python and more.",
+      link: "https://youtube.com/playlist?list=PLrRPvpgDmw0ks5W7U5NmDCU2ydSnNZA_1&si=Rdb6cuA09YQOwrEi"
     },
     {
-      icon: <Code className="h-8 w-8 text-purple-700" />,
-      title: "Cloud Labs & Exercises",
-      description: "Practice cloud deployments and configurations",
-      link: "/exercises/cloud"
+      icon: <Notebook className="h-8 w-8 text-purple-700" />,
+      title: "Data Analytics",
+      description: "Learn about Data Analytics concepts and tools",
+      link: "https://drive.google.com/drive/folders/1edJHD18rGgG-5o2Q0JzYJYu1FztsdiJD?usp=drive_link"
+      },
+    {
+      icon: <Database className="h-8 w-8 text-purple-700" />,
+      title: "SQL Practice",
+      description: "Sharpen your SQL skills with real-world exercises.",
+      link: "/exercises/sql"
     }
-   
   ]
 }
+
 
  
 };
 
 const About = () => {
+  
   const { courseId } = useParams();
   const course = courseId ? courseContent[courseId as keyof typeof courseContent] : null;
+
+  useEffect(() => {
+    const chatbaseScript = document.createElement("script");
+    chatbaseScript.innerHTML = `
+      (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized") {
+          window.chatbase = (...arguments) => {
+            if(!window.chatbase.q) { window.chatbase.q = [] }
+            window.chatbase.q.push(arguments)
+          };
+          window.chatbase = new Proxy(window.chatbase, {
+            get(target, prop) {
+              if(prop === "q") { return target.q }
+              return (...args) => target(prop, ...args)
+            }
+          })
+        }
+        const onLoad = function() {
+          const script = document.createElement("script");
+          script.src = "https://www.chatbase.co/embed.min.js";
+          script.id = "cC2tiBlPFdWLCCWdFMAOq";
+          script.domain = "www.chatbase.co";
+          document.body.appendChild(script)
+        };
+        if(document.readyState === "complete") {
+          onLoad()
+        } else {
+          window.addEventListener("load", onLoad)
+        }
+      })();
+    `;
+    document.body.appendChild(chatbaseScript);
+
+    return () => {
+      if (chatbaseScript) document.body.removeChild(chatbaseScript);
+      const chatbaseEmbed = document.getElementById("cC2tiBlPFdWLCCWdFMAOq");
+      if (chatbaseEmbed) chatbaseEmbed.remove();
+      const iframes = document.querySelectorAll("iframe");
+      iframes.forEach((iframe) => {
+        if (iframe.src.includes("chatbase") || iframe.title === "Chatbase") {
+          iframe.remove();
+        }
+      });
+    };
+  }, []);
+
+  if (!course) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white p-8">
+        <div className="max-w-6xl mx-auto text-center py-20">
+          <h1 className="text-4xl font-bold text-purple-800 mb-4">Course not found</h1>
+          <Link to="/" className="text-purple-600 hover:underline">
+            Return to homepage
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   if (!course) {
     return (
@@ -286,9 +229,9 @@ const About = () => {
           {/* Left Image Card - Dynamic based on course */}
           <div className="flex-1 bg-white rounded-xl shadow-lg border border-purple-100 hover:border-purple-300 overflow-hidden">
             <img 
-              src={`/images/${courseId}-visual.jpg`} 
+              src={`/images/${courseId}.jpg`} 
               alt={`${course.title} Visual`} 
-              className="w-full h-full object-cover max-h-[400px]" 
+              className="w-full h-full object-cover max-h-[700px]" 
             />
           </div>
 

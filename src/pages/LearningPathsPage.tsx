@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+
 const LearningPathsPage = () => {
   const [filter, setFilter] = useState<string[]>([]);
 
@@ -22,7 +23,8 @@ const LearningPathsPage = () => {
       progress: 65,
       tags: ["AI", "Data Science", "Python"],
       estimatedTime: "8 hrs remaining",
-      courseId: "machine-learning"
+      courseId: "machine-learning",
+     
     },
     {
       title: "Blockchain Development",
@@ -31,6 +33,7 @@ const LearningPathsPage = () => {
       tags: ["Web3", "Smart Contracts", "Ethereum"],
       estimatedTime: "12 hrs remaining",
       courseId: "blockchain"
+     
     },
     {
       title: "UX Design Principles",
@@ -38,7 +41,8 @@ const LearningPathsPage = () => {
       progress: 100,
       tags: ["Design", "UI/UX", "Figma"],
       estimatedTime: "Completed",
-      courseId:"ux-design"
+      courseId:"ux-design",
+      img:"ux-design.jpg"
     },
     {
       title: "Data Analytics Expert",
@@ -46,7 +50,8 @@ const LearningPathsPage = () => {
       progress: 45,
       tags: ["Data Analysis", "SQL", "Power BI"],
       estimatedTime: "10 hrs remaining",
-      courseId: "data-analytics"
+      courseId: "data-analytics",
+      
     },
     
     {
@@ -55,16 +60,10 @@ const LearningPathsPage = () => {
       progress: 80,
       tags: ["JavaScript", "React", "Node.js"],
       estimatedTime: "4 hrs remaining",
-      courseId: "web-development"
+      courseId: "web-development",
+     
     },
-    {
-      title: "Cloud Computing ",
-      description: "Understand cloud infrastructure, deployment models, and service architectures.",
-      progress: 20,
-      tags: ["AWS", "Cloud", "DevOps"],
-      estimatedTime: "15 hrs remaining",
-      courseId:"Cloud Computing"
-    },
+  
   ];
 
   // Extract all unique tags
