@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 interface LearningPathCardProps {
   title: string;
@@ -48,9 +50,11 @@ const LearningPathCard = ({
         </div>
       </CardContent>
       <CardFooter>
-        <Button variant="outline" className="w-full" size="sm">
-          Continue learning <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+      <Link to="/about">
+    <Button variant="outline">
+      Continue Learning <ArrowRight className="ml-2 h-4 w-4" />
+    </Button>
+  </Link>
       </CardFooter>
     </Card>
   );

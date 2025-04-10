@@ -10,6 +10,9 @@ import LearningPathsPage from "./pages/LearningPathsPage";
 import CredentialsPage from "./pages/CredentialsPage";
 import ProfilePage from "./pages/ProfilePage";
 import NotFound from "./pages/NotFound";
+import About from "../src/components/dashboard/About";
+
+
 
 const queryClient = new QueryClient();
 
@@ -25,7 +28,10 @@ const App = () => (
           <Route path="/learning-paths" element={<LearningPathsPage />} />
           <Route path="/credentials" element={<CredentialsPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/about" element={<About />} />
+         
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
