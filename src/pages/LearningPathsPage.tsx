@@ -14,7 +14,7 @@ import {
 const LearningPathsPage = () => {
   const [filter, setFilter] = useState<string[]>([]);
 
-  // Sample data for demonstration
+  
   const learningPaths = [
     {
       title: "Machine Learning Fundamentals",
@@ -22,6 +22,7 @@ const LearningPathsPage = () => {
       progress: 65,
       tags: ["AI", "Data Science", "Python"],
       estimatedTime: "8 hrs remaining",
+      courseId: "machine-learning"
     },
     {
       title: "Blockchain Development",
@@ -29,6 +30,7 @@ const LearningPathsPage = () => {
       progress: 30,
       tags: ["Web3", "Smart Contracts", "Ethereum"],
       estimatedTime: "12 hrs remaining",
+      courseId: "blockchain"
     },
     {
       title: "UX Design Principles",
@@ -36,27 +38,32 @@ const LearningPathsPage = () => {
       progress: 100,
       tags: ["Design", "UI/UX", "Figma"],
       estimatedTime: "Completed",
+      courseId:"ux-design"
     },
     {
-      title: "Cybersecurity Essentials",
-      description: "Learn the fundamentals of network security, encryption, and threat prevention strategies.",
+      title: "Data Analytics Expert",
+      description: "Become proficient in data collection, analysis, visualization, and decision-making using tools like Excel, SQL, and Power BI.",
       progress: 45,
-      tags: ["Security", "Networks", "Cryptography"],
+      tags: ["Data Analysis", "SQL", "Power BI"],
       estimatedTime: "10 hrs remaining",
+      courseId: "data-analytics"
     },
+    
     {
       title: "Full Stack Web Development",
       description: "Master both frontend and backend technologies to build complete web applications.",
       progress: 80,
       tags: ["JavaScript", "React", "Node.js"],
       estimatedTime: "4 hrs remaining",
+      courseId: "web-development"
     },
     {
-      title: "Cloud Computing Foundations",
+      title: "Cloud Computing ",
       description: "Understand cloud infrastructure, deployment models, and service architectures.",
       progress: 20,
       tags: ["AWS", "Cloud", "DevOps"],
       estimatedTime: "15 hrs remaining",
+      courseId:"Cloud Computing"
     },
   ];
 
