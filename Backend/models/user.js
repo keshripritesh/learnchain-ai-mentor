@@ -1,11 +1,9 @@
-// Backend/models/User.js
-const mongoose = require("mongoose");
+// Corrected user.js
+const express = require('express');
+const router = express.Router();
 
-const userSchema = new mongoose.Schema({
-  walletAddress: { type: String, required: true, unique: true },
-  signedMessage: { type: String, required: true },
+router.get('/users', (req, res) => {
+  res.status(200).json([{ name: 'Alice', email: 'alice@example.com' }]);
 });
 
-const User = mongoose.model("User", userSchema);
-
-module.exports = User;
+module.exports = router;
