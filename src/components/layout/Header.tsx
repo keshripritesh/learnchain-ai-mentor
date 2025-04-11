@@ -13,8 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
- 
-
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState(null); // Replace with real auth state
@@ -35,6 +33,13 @@ const Header = () => {
         </div>
 
         <div className="ml-auto flex items-center gap-2">
+          <Button
+            onClick={() => navigate("/tracker")}
+            variant="default"
+          >
+            Credential Tracker
+          </Button>
+
           <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
             <Bell className="h-5 w-5" />
           </Button>
@@ -61,11 +66,7 @@ const Header = () => {
                 <DropdownMenuItem>Log out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          ) : (
-           
-
-<Button onClick={() => navigate("/login")}>Login</Button>
-          )}
+          ) :null}
         </div>
       </div>
     </header>

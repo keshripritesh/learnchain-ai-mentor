@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import About from "../src/components/dashboard/About";
 import Login from "./Login"; // no typo, no extra extension
 import Signup from "./Signup"; // no typo, no extra extension
+import Tracker from "./tracker";  
 
 
 
@@ -35,6 +36,8 @@ const App = () => (
           <Route path="/about/:courseId" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/tracker" element={<Tracker />} />
+
           
          
           <Route path="*" element={<NotFound />} />
